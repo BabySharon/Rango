@@ -1,1 +1,3 @@
-rango/tests_chapter3.py
+rango/tests
+**/__pycache__
+db.sqlite3
