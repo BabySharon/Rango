@@ -41,12 +41,14 @@ def populate():
     # and then adds all the associated pages for that category.
     for cat, cat_data in cats.items():
         c = add_cat(cat, cat_data['likes'], cat_data['views'])
+        page_length = len(cat_data['pages'])
         for p in cat_data['pages']:
-            add_page(c, p['title'], p['url'])
+            add_page(c, p['title'], p['url'], page_length)
             # Print out the categories we have added.
-            for c in Category.objects.all():
-                for p in Page.objects.filter(category=c):
-                    print(f'- {c}: {p}')
+            # for c in Category.objects.all():
+                # for p in Page.objects.filter(category=c):
+                    # print(f'- {c}: {p}')
+            page_length=page_length-1
 
 def add_page(cat, title, url, views=0):
         p = Page.objects.get_or_create(category=cat, title=title)[0]
